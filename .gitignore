@@ -1,2 +1,4 @@
 .idea
 bin/*
+build/docker/data/*
+build/docker/conf/*

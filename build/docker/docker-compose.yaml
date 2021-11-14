@@ -1,0 +1,37 @@
+version: '2'
+services:
+    mysql:
+        image: mysql:5
+        command: --explicit_defaults_for_timestamp=1
+        ulimits:
+            nofile:
+                soft: 65536
+                hard: 65536
+        ports:
+            - 3336:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - TZ=Asia/Seoul
+            - MAX_CONNECTIONS=2048
+        volumes:
+            - /svc/IMBiz/build/docker/data/mysql:/var/lib/mysql
+            - /svc/IMBiz/build/docker/conf/mysql:/etc/mysql/conf.d
+            
+    mongo:
+         image: mongo:3
+         command: --storageEngine wiredTiger
+         environment:
+            - TZ=Asia/Seoul
+         ports:
+             - 27037:27017
+         volumes:
+             - /svc/IMBiz/build/docker/data/mongo:/data/db
+
+    redis:
+        image: redis:latest
+        environment:
+            - TZ=Asia/Seoul
+        ports:
+            - 6330:6379
+        volumes:
+            - /svc/IMBiz/build/docker/data/redis:/data
