@@ -1,0 +1,111 @@
+basePath: /
+host: localhost:18181
+info:
+  contact: {}
+  title: IMBiz Swagger API
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Get Hello Test
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Hello, IMBIZ!
+          schema:
+            type: string
+      summary: Get Hello
+  /userinfo/create:
+    post:
+      consumes:
+      - application/json
+      description: Create User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Create User
+      tags:
+      - User
+  /userinfo/delete:
+    delete:
+      consumes:
+      - application/json
+      description: Delete User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Delete User
+      tags:
+      - User
+  /userinfo/login:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Login
+      tags:
+      - Login
+  /userinfo/logout:
+    post:
+      consumes:
+      - application/json
+      description: Logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Logout
+      tags:
+      - Login
+  /userinfo/read:
+    get:
+      consumes:
+      - application/json
+      description: Read User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Read User
+      tags:
+      - User
+  /userinfo/update:
+    put:
+      consumes:
+      - application/json
+      description: Update User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+      summary: Update User
+      tags:
+      - User
+swagger: "2.0"
