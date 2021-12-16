@@ -40,12 +40,12 @@
                 "summary": "POST Mysql Create",
                 "parameters": [
                     {
-                        "description": "TEXT",
-                        "name": "body",
+                        "description": "text",
+                        "name": "TEXT",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "type": "string"
                         }
                     }
                 ],
@@ -71,12 +71,12 @@
                 "summary": "DELETE Mysql Delete",
                 "parameters": [
                     {
-                        "description": "INDEX",
-                        "name": "body",
+                        "description": "index",
+                        "name": "INDEX",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "type": "integer"
                         }
                     }
                 ],
@@ -109,9 +109,7 @@
                                 "type": "array",
                                 "items": {
                                     "type": "object",
-                                    "additionalProperties": {
-                                        "type": "string"
-                                    }
+                                    "additionalProperties": true
                                 }
                             }
                         }
@@ -131,12 +129,21 @@
                 "summary": "PUT Mysql Update",
                 "parameters": [
                     {
-                        "description": "INDEX, TEXT",
-                        "name": "body",
+                        "description": "text",
+                        "name": "TEXT",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "index",
+                        "name": "INDEX",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 ],

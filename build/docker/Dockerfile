@@ -6,4 +6,6 @@ COPY ./bin/imbizapi .
 
 EXPOSE 18181
 
+ENV GO_ENV=stage
+
 CMD ["/app/imbizapi"]

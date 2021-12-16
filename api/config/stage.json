@@ -1,0 +1,26 @@
+{
+    "Mysql": {
+      "Host": "10.20.82.38",
+      "Port": 3336,
+      "Db": "IMBiz",
+      "Usr": "imbiz",
+      "Pwd": "imbiz"
+    },
+    "Mongo": {
+      "Host": "10.20.82.38",
+      "Port": 27037,
+      "Db": "imbiz"
+    },
+    "Redis": {
+      "Host": "10.20.82.38",
+      "Port": 6330,
+      "Db": 1
+    },
+    "Logger" : {
+      "Path" : "logs"
+    },
+    "System" : {
+      "Port"   : 18182
+    }
+}
+  

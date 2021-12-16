@@ -24,12 +24,12 @@ paths:
       - application/json
       description: POST Mysql Create
       parameters:
-      - description: TEXT
+      - description: text
         in: body
-        name: body
+        name: TEXT
         required: true
         schema:
-          type: object
+          type: string
       produces:
       - application/json
       responses:
@@ -44,12 +44,12 @@ paths:
       - application/json
       description: DELETE Mysql Delete
       parameters:
-      - description: INDEX
+      - description: index
         in: body
-        name: body
+        name: INDEX
         required: true
         schema:
-          type: object
+          type: integer
       produces:
       - application/json
       responses:
@@ -71,8 +71,7 @@ paths:
           schema:
             items:
               items:
-                additionalProperties:
-                  type: string
+                additionalProperties: true
                 type: object
               type: array
             type: array
@@ -83,12 +82,18 @@ paths:
       - application/json
       description: PUT Mysql Update
       parameters:
-      - description: INDEX, TEXT
+      - description: text
         in: body
-        name: body
+        name: TEXT
         required: true
         schema:
-          type: object
+          type: string
+      - description: index
+        in: body
+        name: INDEX
+        required: true
+        schema:
+          type: integer
       produces:
       - application/json
       responses:
