@@ -31,10 +31,11 @@ func Hello(c echo.Context) error {
 // @Success 200 {array} []map[string]string{}
 // @Router /mysql/read [get]
 func MysqlRead(c echo.Context) error {
-	db := mysql.GetDBInstance()
+	db := mysql.GetDBInstance("imbiz")
+	log.Println(db)
 	d, err := db.Get("SELECT * FROM TEST")
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 	return c.JSONPretty(http.StatusOK, d, "  ")
 }
@@ -47,13 +48,13 @@ func MysqlRead(c echo.Context) error {
 // @Success 200 {string} string "success"
 // @Router /mysql/create [post]
 func MysqlCreate(c echo.Context) error {
-	db := mysql.GetDBInstance()
+	db := mysql.GetDBInstance("imbiz")
 	params := make(map[string]string)
 	_ = c.Bind(&params)
 
 	err := db.Set("INSERT INTO `TEST` (`TEXT`) VALUES ('" + params["TEXT"] + "')")
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 	return c.String(http.StatusOK, "success")
 }
@@ -66,13 +67,13 @@ func MysqlCreate(c echo.Context) error {
 // @Success 200 {string} string "success"
 // @Router /mysql/update [put]
 func MysqlUpdate(c echo.Context) error {
-	db := mysql.GetDBInstance()
+	db := mysql.GetDBInstance("imbiz")
 	params := make(map[string]string)
 	_ = c.Bind(&params)
 
 	err := db.Set("UPDATE `TEST` SET `TEXT` = '" + params["TEXT"] + "' WHERE (`INDEX` = " + params["INDEX"] + ")")
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 	return c.String(http.StatusOK, "success")
 }
@@ -85,13 +86,13 @@ func MysqlUpdate(c echo.Context) error {
 // @Success 200 {string} string "success"
 // @Router /mysql/delete [delete]
 func MysqlDelete(c echo.Context) error {
-	db := mysql.GetDBInstance()
+	db := mysql.GetDBInstance("imbiz")
 	params := make(map[string]string)
 	_ = c.Bind(&params)
 
 	err := db.Set("DELETE FROM `TEST` WHERE (`INDEX` = " + params["INDEX"] + ")")
 	if err != nil {
-		log.Panic()
+		log.Panic(err)
 	}
 	return c.String(http.StatusOK, "success")
 }

@@ -1,5 +1,13 @@
-CREATE DATABASE `IMBiz`;
+-- user add
+USE mysql;
+CREATE USER 'imbiz'@'%' IDENTIFIED BY 'imbiz';
+GRANT ALL PRIVILEGES ON *.* TO 'imbiz'@'%';
 
+
+-- database add
+CREATE SCHEMA `IMBiz` DEFAULT CHARACTER SET utf8 ;
+
+-- table add
 USE `IMBiz`;
 CREATE TABLE `USER` (
   `USER_ID` varchar(45) NOT NULL,
@@ -18,4 +26,10 @@ CREATE TABLE `DEPARTMENT` (
   `ID` varchar(45) NOT NULL,
   `NAME` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `TEST` (
+  `INDEX` int(11) NOT NULL AUTO_INCREMENT,
+  `TEXT` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`INDEX`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

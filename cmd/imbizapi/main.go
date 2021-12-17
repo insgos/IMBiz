@@ -40,7 +40,7 @@ func main() {
 	logger.SetLogger(_conf.Logger.Path)
 
 	// db init
-	mysql.Connect(_conf)
+	mysql.Connect(_conf, "imbiz")
 	e := echo.New()
 	/*
 		echo Middleware setting

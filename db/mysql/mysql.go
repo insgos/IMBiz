@@ -24,7 +24,7 @@ type MYDB struct {
 	*sql.DB
 }
 
-var DB *MYDB
+var DBs = make(map[string]*MYDB)
 
 func (t *CONFIG) GetUrl() string {
 	tmp := []string{}
@@ -39,15 +39,14 @@ func (t *CONFIG) GetUrl() string {
 	return strings.Join(tmp, "")
 }
 
-func Connect(_conf cnf.Config) {
-	log.Println(_conf)
+func Connect(_conf cnf.Config, key string) {
 	connstr := (&CONFIG{
 		Addr:     _conf.Mysql.Host + ":" + strconv.Itoa(_conf.Mysql.Port),
 		Username: _conf.Mysql.Usr,
 		Password: _conf.Mysql.Pwd,
 		Database: _conf.Mysql.Db,
 	}).GetUrl()
-
+	log.Println(connstr)
 	instance, err := sql.Open("mysql", connstr)
 	if err != nil {
 		log.Panic(err)
@@ -56,14 +55,22 @@ func Connect(_conf cnf.Config) {
 		log.Panic(err)
 	}
 
+	// 옵션 설정
 	// instance.SetConnMaxLifetime(0)
 	instance.SetMaxIdleConns(10)
 	instance.SetMaxOpenConns(100)
-	DB = (&MYDB{DB: instance})
+	DBs[key] = (&MYDB{DB: instance})
 }
 
-func GetDBInstance() *MYDB {
-	return DB
+func GetDBInstance(key string) *MYDB {
+	return DBs[key]
+}
+
+func DisConnect() {
+	for key, val := range DBs {
+		val.DB.Close()
+		log.Println(key + " db disconnect")
+	}
 }
 
 func (t *MYDB) Get(query string) ([]map[string]interface{}, error) {
