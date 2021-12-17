@@ -20,7 +20,7 @@ func main() {
 	// SWAGGER URL
 	e.GET("/swagger/*", swagger.WrapHandler)
 	// TEST URL
-	e.GET("/", router.Hello)
+	e.GET("/hello", router.Hello)
 	// USER INFO CRUD
 
 	e.GET("/userinfo/read", auth.ReadUser)

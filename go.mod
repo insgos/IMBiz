@@ -3,8 +3,10 @@ module imbiz
 go 1.17
 
 require (
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/labstack/echo/v4 v4.6.1
 	github.com/swaggo/echo-swagger v1.1.4
+	github.com/swaggo/swag v1.7.0
 )
 
 require (
@@ -22,7 +24,6 @@ require (
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14 // indirect
-	github.com/swaggo/swag v1.7.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	golang.org/x/crypto v0.0.0-20210817164053-32db794688a5 // indirect
